@@ -6,8 +6,10 @@ module ActiveRecord
         #
         # Returns the cart item for the specified object
         #
-        def item_for(object)
-          shopping_cart_items.where(item: object).first
+        def item_for(object, attributes={})
+          items = shopping_cart_items.where(item: object)
+          items = items.where(attributes) if attributes.present? and !attributes.nil?
+          items.first
         end
 
         #
