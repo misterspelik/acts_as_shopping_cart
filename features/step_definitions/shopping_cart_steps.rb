@@ -19,7 +19,7 @@ end
 
 When /^I non-cumulatively add product "([^"]*)" to cart with price "([^"]*)"$/ do |product_name, price|
   product = Product.find_by_name(product_name)
-  @cart.add(product, price, 1, false)
+  @cart.add(product, price, 1, cumulative: false)
 end
 
 Then /^the total unique items on the cart should be "([^"]*)"$/ do |total|
